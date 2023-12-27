@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.polatechno.loginskeleton.presentation.GetCodeScreen.GetCodeFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/actionFromLoginToConfirm"
+            app:destination="@id/ConfirmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ConfirmFragment"
+        android:name="com.polatechno.loginskeleton.presentation.GetTokenScreen.ConfirmFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_confirm">
+        <action
+            android:id="@+id/actionFromConfirmToWelcome"
+            app:destination="@id/WelcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/WelcomeFragment"
+        android:name="com.polatechno.loginskeleton.presentation.SuccessScreen.WelcomeFragment"
+        android:label="@string/third_fragment_label"
+        tools:layout="@layout/fragment_welcome" />
+
+</navigation>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LoginSkeleton</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Login </string>
+    <string name="second_fragment_label">Confirmation </string>
+    <string name="third_fragment_label">Welcome </string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="api_response_data_will_go_here">Api response data will go here</string>
+    <string name="login">Login</string>
+    <string name="resend_code">Запросить новый код</string>
+    <string name="phone_format_russia">+7 ([000]) [000]-[00]-[00]</string>
+    <string name="phone_code_russia">7</string>
+</resources>
