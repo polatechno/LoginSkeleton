@@ -17,7 +17,6 @@ class GetCodeScreenModel @Inject constructor(
     private val getCodeUseCase: GetCodeUseCase
 ) : ViewModel() {
 
-
     private val _state = MutableStateFlow(GetCodeScreenState())
     val state: StateFlow<GetCodeScreenState> = _state
 
@@ -27,7 +26,6 @@ class GetCodeScreenModel @Inject constructor(
                 is Resource.Success -> {
                     LogManager.print("Resource.Success")
                     _state.value = GetCodeScreenState(codeResult = result.data)
-
                 }
 
                 is Resource.Error -> {

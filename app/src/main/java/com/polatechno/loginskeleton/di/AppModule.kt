@@ -23,7 +23,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMyApi(): PravoeDeloApi {
+    fun provideApi(): PravoeDeloApi {
 
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY

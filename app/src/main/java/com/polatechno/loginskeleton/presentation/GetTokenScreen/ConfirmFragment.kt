@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 class ConfirmFragment : Fragment() {
 
     private var _binding: FragmentConfirmBinding? = null
-
     private val viewModel: ConfirmScreenViewModel by activityViewModels()
 
     private val binding get() = _binding!!
@@ -32,10 +31,8 @@ class ConfirmFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentConfirmBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,7 +46,6 @@ class ConfirmFragment : Fragment() {
             status = it.getString(Constants.PARAM_STATUS) ?: ""
             LogManager.print("$phoneNumber $code $status")
         }
-
         val listener =
             MaskedTextChangedListener("[000000]", binding.confirmCodeInput,
                 object : MaskedTextChangedListener.ValueListener {
@@ -62,14 +58,11 @@ class ConfirmFragment : Fragment() {
                         binding.buttonConfirm.isEnabled = maskFilled
                     }
                 })
-
         binding.confirmCodeInput.addTextChangedListener(listener)
         binding.confirmCodeInput.hint = listener.placeholder();
         binding.confirmCodeInput.onFocusChangeListener = listener
         binding.confirmCodeInput.addTextChangedListener(listener)
-
         binding.apiResult.text = "$phoneNumber $code $status"
-
         binding.buttonConfirm.setOnClickListener {
             hideKeyboard()
             if (binding.confirmCodeInput.text.isNullOrBlank()) {
@@ -79,7 +72,6 @@ class ConfirmFragment : Fragment() {
             }
             viewModel.getToken(phoneNumber, binding.confirmCodeInput.text.toString())
         }
-
         binding.buttonResend.setOnClickListener {
             hideKeyboard()
             binding.confirmCodeInput.text = null
@@ -89,7 +81,6 @@ class ConfirmFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.stateConfirmScreen.collect() { state ->
-
                 if (state.error.isNotBlank()) {
                     LogManager.print("ERROR: " + state.error)
                     binding.confirmCodeContainer.error = state.error
@@ -103,10 +94,8 @@ class ConfirmFragment : Fragment() {
                     openWelcomeFragment(phoneNumber, token)
                 }
 
-
                 binding.buttonResend.visibility =
                     if (state.canRegenerate) View.VISIBLE else View.GONE
-
 
                 state.regeneratedCode?.let { regeneratedCode ->
                     binding.apiResult.text = "Regenerated code: $regeneratedCode"
@@ -115,14 +104,12 @@ class ConfirmFragment : Fragment() {
         }
     }
 
-
     private fun openWelcomeFragment(phoneNumber: String, token: String) {
         val bundle = Bundle()
         bundle.putString(Constants.PARAM_PHONE_NUMBER, phoneNumber)
         bundle.putString(Constants.PARAM_TOKEN, token)
         findNavController().navigate(R.id.actionFromConfirmToWelcome, bundle)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -14,6 +14,4 @@ interface MyRepository {
         @Query("login") loginNumber: String,
         @Query("password") password: String
     ): Response<String>
-
-
 }

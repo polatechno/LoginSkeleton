@@ -22,7 +22,6 @@ class ConfirmScreenViewModel @Inject constructor(
     private val _stateConfirmScreen = MutableStateFlow(ComfirmScreenState())
     val stateConfirmScreen: StateFlow<ComfirmScreenState> = _stateConfirmScreen
 
-
     fun getToken(phoneNumber: String, password: String) {
         getTokenUseCase(phoneNumber, password).onEach { result ->
             when (result) {
@@ -47,7 +46,6 @@ class ConfirmScreenViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-
     fun regenerateCode(phoneNumber: String) {
         regenerateCodeUseCase(phoneNumber).onEach { result ->
             when (result) {
@@ -63,8 +61,7 @@ class ConfirmScreenViewModel @Inject constructor(
                     LogManager.print("Resource.Error")
                     _stateConfirmScreen.value = ComfirmScreenState(
                         error = result.message ?: "An unexpected error occured",
-
-                        )
+                    )
                 }
 
                 is Resource.Loading -> {

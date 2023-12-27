@@ -1,7 +1,6 @@
 package com.polatechno.loginskeleton.domain.use_case
 
 
-import android.widget.Toast
 import com.polatechno.loginskeleton.common.LogManager
 import com.polatechno.loginskeleton.common.Resource
 import com.polatechno.loginskeleton.domain.repository.MyRepository
@@ -10,7 +9,6 @@ import kotlinx.coroutines.flow.flow
 import org.json.JSONObject
 import retrofit2.HttpException
 import java.io.IOException
-import java.security.AccessController.getContext
 import javax.inject.Inject
 
 

@@ -5,13 +5,7 @@ data class CodeResult(
     val status: String,
 ) {
 
-    fun shouldConfirmCode(): Boolean {
-        return ("new" == status)
-    }
-
     override fun toString(): String {
         return "(code='$code' |  status='$status')"
     }
-
-
 }

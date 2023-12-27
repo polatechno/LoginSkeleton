@@ -6,5 +6,4 @@ data class GetCodeScreenState(
     val isLoading: Boolean = false,
     val codeResult: CodeResult? = null,
     val error: String = ""
-
 )

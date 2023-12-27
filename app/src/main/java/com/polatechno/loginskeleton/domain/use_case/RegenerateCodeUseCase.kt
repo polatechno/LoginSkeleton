@@ -4,7 +4,6 @@ package com.polatechno.loginskeleton.domain.use_case
 import com.polatechno.loginskeleton.common.LogManager
 import com.polatechno.loginskeleton.common.Resource
 import com.polatechno.loginskeleton.domain.repository.MyRepository
-import com.polatechno.loginskeleton.domain.model.CodeResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.json.JSONObject
@@ -16,7 +15,6 @@ class RegenerateCodeUseCase @Inject constructor(
     private val repository: MyRepository
 ) {
     operator fun invoke(phoneNumber: String): Flow<Resource<String>> = flow {
-
 
         try {
             emit(Resource.Loading<String>())

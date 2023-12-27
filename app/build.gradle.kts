@@ -2,13 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
-//    id("com.google.dagger.hilt.android")
-
-//    id ("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
-
-
 
 android {
     namespace = "com.polatechno.loginskeleton"
@@ -80,9 +75,8 @@ dependencies {
     //live data
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
-    implementation ("com.redmadrobot:input-mask-android:7.2.4")
-
-
+    //Masking inuts
+    implementation("com.redmadrobot:input-mask-android:7.2.4")
 
 }
 

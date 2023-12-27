@@ -21,9 +21,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GetCodeFragment : Fragment() {
-
     private var _binding: FragmentLoginBinding? = null
-
     private val viewModel: GetCodeScreenModel by activityViewModels()
 
     private val binding get() = _binding!!
@@ -32,15 +30,12 @@ class GetCodeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         var phoneNumber = "";
         val listener =
             MaskedTextChangedListener(
@@ -56,14 +51,11 @@ class GetCodeFragment : Fragment() {
                         phoneNumber = extractedValue;
                         LogManager.print(phoneNumber)
                     }
-
                 })
-
         binding.phoneNumberInput.addTextChangedListener(listener)
         binding.phoneNumberInput.hint = listener.placeholder();
         binding.phoneNumberInput.onFocusChangeListener = listener
         binding.phoneNumberInput.addTextChangedListener(listener)
-
         binding.buttonNext.setOnClickListener {
             hideKeyboard()
             if (phoneNumber.isBlank()) {
@@ -77,18 +69,15 @@ class GetCodeFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect() { state ->
-
-
                 if (state.error.isNotBlank()) {
                     LogManager.print("ERROR: " + state.error)
                     binding.phoneNumberContainer.error = state.error
                 }
+
                 binding.pbProcessing.visibility = if (state.isLoading) View.VISIBLE else View.GONE
 
                 state.codeResult?.let { result ->
-
                     binding.apiResult.text = result.toString()
-
                     openConfirmFragment(
                         phoneNumber,
                         result.code, result.status
@@ -105,7 +94,6 @@ class GetCodeFragment : Fragment() {
         bundle.putString(Constants.PARAM_STATUS, status)
         findNavController().navigate(R.id.actionFromLoginToConfirm, bundle)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
